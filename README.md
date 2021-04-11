@@ -29,7 +29,7 @@
 | user         | references | null: false, foreign_key: true  |
 | text         | text       | null: false                     |
 - belongs_to :user
-- has_one :adress
+- has_one :address
 ## buysテーブル
 
 | Column     | Type       | Options                           |
@@ -42,14 +42,14 @@
 - has_one :adress
 
 
-## adressesテーブル
+## addressesテーブル
 
 | Column           | Type          | Options                          |
 | ------           | ------        | -----------                      |
-| adress           | string        | null: false                      |
+| address          | string        | null: false                      |
 | buy              | references    | null: false, foreign_key :true   |
 | postcode         | string        | null: false                      |
-| prefecture       | integer       | null: false                      |
+| prefecture       | string        | null: false                      |
 | city             | string        | null: false                      |
 | block            | string        | null: false                      | 
 | building         | string        |                                  |
