@@ -9,9 +9,9 @@
 | firstname            | string     | null: false                   |
 | lastname_furigana    | string     | null: false                   |
 | firstname_furigana   | string     | null: false                   |
-| birthday             | integer    | null: false                   |
+| birthday             | date       | null: false                   |
 - has_many :items
--has_many :buys
+- has_many :buys
 
 
 
@@ -19,32 +19,26 @@
 
 | Column       | Type       | Options                         |
 | ------       | ------     | -----------                     |
-| itemsname    | string     | null: false                     |
+| name         | string     | null: false                     |
 | category_id  | integer    | null: false                     |
 | condition_id | integer    | null: false                     |
 | tax_id       | integer    | null: false                     |
 | area_id      | integer    | null: false                     |
 | day_id       | integer    | null: false                     |
 | price        | integer    | null: false                     |
-| seller       | integer    | null: false                     |
-| users        | references | null: false, foreign_key: true  |
+| user         | references | null: false, foreign_key: true  |
 | text         | text       | null: false                     |
-
-
-
-- has_many :users
--has_one :adresses
-
-
+- belongs_to :user
+- has_one :adress
 ## buysテーブル
 
 | Column     | Type       | Options                           |
 | ------     | ------     | -----------                       |
-| items      | references | null: false, foreign_key :true    |
-| users      | references | null: false, foreign_key :true    |
+| item       | references | null: false, foreign_key :true    |
+| user       | references | null: false, foreign_key :true    |
 
-- has_many :users
--has_one :adresses
+- belongs_to :user
+- has_one :adress
 
 ## adressesテーブル
 
@@ -52,17 +46,15 @@
 | ------           | ------     | -----------                     |
 | adresses         | string     | null: false                     |
 | buys             | references | null: false, foreign_key: true  |
-| items            | references | null: false, foreign_key: tru   |
-| users            | references | null: false, foreign_key: true  |
 | postcode         | integer    | null: false                     |
 | prefecture       | integer    | null: false                     |
 | city             | integer    | null: false                     |
 | block            | integer    | null: false                     |
-| building         | integer    | null: false                     |
+| building         | integer    |                                 |
 | phone_number     | integer    | null: false                     |
 | buy_histories    | string     | null: false                     |
-- has_one :items
--has_one :buys
+- belongs_to :user
+- belongs_to :buy
 
 
 # README
