@@ -54,7 +54,6 @@
 | block            | integer       | null: false                     |
 | building         | integer       |                                 |
 | phone_number     | string        | null: false                     |
-| buy_histories    | references    | null: false, foreign_key  :true |
 - belongs_to :buy
 
 
