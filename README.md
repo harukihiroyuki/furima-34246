@@ -44,16 +44,16 @@
 
 ## adressesテーブル
 
-| Column           | Type          | Options                         |
-| ------           | ------        | -----------                     |
-| adress        | string           | null: false                     |
-| buy             | references     | null: false, foreign_key :true  |
-| postcode         | integer       | null: false                     |
-| prefecture       | integer       | null: false                     |
-| city             | integer       | null: false                     |
-| block            | integer       | null: false                     |
-| building         | integer       |                                 |
-| phone_number     | string        | null: false                     |
+| Column           | Type          | Options                          |
+| ------           | ------        | -----------                      |
+| adress           | string        | null: false                      |
+| buy              | references    | null: false, foreign_key :true   |
+| postcode         | string        | null: false                      |
+| prefecture       | integer       | null: false                      |
+| city             | string        | null: false                      |
+| block            | string        | null: false                      | 
+| building         | string        |                                  |
+| phone_number     | string        | null: false                      |
 - belongs_to :buy
 
 
