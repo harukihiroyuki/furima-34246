@@ -38,22 +38,23 @@
 | user       | references | null: false, foreign_key :true    |
 
 - belongs_to :user
+- belongs_to :item
 - has_one :adress
+
 
 ## adressesテーブル
 
-| Column           | Type       | Options                         |
-| ------           | ------     | -----------                     |
-| adresses         | string     | null: false                     |
-| buys             | references | null: false, foreign_key: true  |
-| postcode         | integer    | null: false                     |
-| prefecture       | integer    | null: false                     |
-| city             | integer    | null: false                     |
-| block            | integer    | null: false                     |
-| building         | integer    |                                 |
-| phone_number     | integer    | null: false                     |
-| buy_histories    | string     | null: false                     |
-- belongs_to :user
+| Column           | Type          | Options                         |
+| ------           | ------        | -----------                     |
+| adress        | string           | null: false                     |
+| buy             | references     | null: false, foreign_key :true  |
+| postcode         | integer       | null: false                     |
+| prefecture       | integer       | null: false                     |
+| city             | integer       | null: false                     |
+| block            | integer       | null: false                     |
+| building         | integer       |                                 |
+| phone_number     | string        | null: false                     |
+| buy_histories    | references    | null: false, foreign_key  :true |
 - belongs_to :buy
 
 
