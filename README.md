@@ -17,19 +17,19 @@
 
 ## itemsテーブル
 
-| Column       | Type       | Options                         |
-| ------       | ------     | -----------                     |
-| name         | string     | null: false                     |
-| category_id  | integer    | null: false                     |
-| condition_id | integer    | null: false                     |
-| tax_id       | integer    | null: false                     |
-| prefecture_id| integer    | null: false                     |
-| send_day_id  | integer    | null: false                     |
-| price        | integer    | null: false                     |
-| user         | references | null: false, foreign_key: true  |
-| text         | text       | null: false                     |
+| Column            | Type       | Options                         |
+| ------            | ------     | -----------                     |
+| name              | string     | null: false                     |
+| category_id       | integer    | null: false                     |
+| item_condition_id | integer    | null: false                     |
+| tax_id            | integer    | null: false                     |
+| prefecture_id     | integer    | null: false                     |
+| send_day_id       | integer    | null: false                     |
+| price             | integer    | null: false                     |
+| user              | references | null: false, foreign_key: true  |
+| text              | text       | null: false                     |
 - belongs_to :user
-- has_one :address
+- has_one :buy
 ## buysテーブル
 
 | Column     | Type       | Options                           |
