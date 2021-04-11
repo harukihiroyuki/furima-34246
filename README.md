@@ -23,8 +23,8 @@
 | category_id  | integer    | null: false                     |
 | condition_id | integer    | null: false                     |
 | tax_id       | integer    | null: false                     |
-| area_id      | integer    | null: false                     |
-| day_id       | integer    | null: false                     |
+| prefecture_id| integer    | null: false                     |
+| send_day_id  | integer    | null: false                     |
 | price        | integer    | null: false                     |
 | user         | references | null: false, foreign_key: true  |
 | text         | text       | null: false                     |
@@ -39,7 +39,7 @@
 
 - belongs_to :user
 - belongs_to :item
-- has_one :adress
+- has_one :address
 
 
 ## addressesテーブル
@@ -49,7 +49,7 @@
 | address          | string        | null: false                      |
 | buy              | references    | null: false, foreign_key :true   |
 | postcode         | string        | null: false                      |
-| prefecture       | string        | null: false                      |
+| prefecture_id    | integer       | null: false                      |
 | city             | string        | null: false                      |
 | block            | string        | null: false                      | 
 | building         | string        |                                  |
