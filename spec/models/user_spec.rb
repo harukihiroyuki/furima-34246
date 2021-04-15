@@ -11,6 +11,10 @@ RSpec.describe User, type: :model do
         @user.password_confirmation ='a123456'
         expect(@user).to be_valid   
       end
+      it "全てのカラムが揃っていれば登録できること" do
+        @user = FactoryBot.build(:user)
+        expect(@user).to be_valid
+      end
     end
    context "新規登録がうまくいかない時" do
       it "passwordは全角では登録できない" do

@@ -6,8 +6,8 @@ class User < ApplicationRecord
   
     with_options presence: true do
       validates :username
-      validates :lastname, format: { with: /\A[ぁ-んァ-ン一-龥]/, message: 'lastnameは全角で入力してください'}
-      validates :firstname, format: { with: /\A[ぁ-んァ-ン一-龥]/, message: 'firstnameは全角で入力してください'}
+      validates :lastname, format: { with: /\A[ぁ-んァ-ン一-龥々ー]+\z/, message: 'lastnameは全角で入力してください'}
+      validates :firstname, format: { with: /\A[ぁ-んァ-ン一-龥々ー]+\z/, message: 'firstnameは全角で入力してください'}
       validates :lastname_furigana, format: { with: /\A[ァ-ヶー－]+\z/ , message: 'カタカナでフリガナを入力してください'}
       validates :firstname_furigana, format: { with: /\A[ァ-ヶー－]+\z/, message: 'カタカナでフリガナを入力してください'}
       validates :birthday
