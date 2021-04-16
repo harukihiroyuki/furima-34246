@@ -46,13 +46,13 @@ RSpec.describe User, type: :model do
       it "firstnameは漢字平仮名カタカナ以外では登録できない" do
       @user.firstname = "aiueo"
       @user.valid?
-        expect(@user.errors.full_messages).to include("Firstname firstnameは全角で入力してください" )
+        expect(@user.errors.full_messages).to include("Firstname は全角で入力してください" )
       end
 
       it "lastnameは漢字平仮名カタカナ以外では登録できない" do
         @user.lastname = "aiueo"
         @user.valid?
-        expect(@user.errors.full_messages).to include("Lastname lastnameは全角で入力してください" )
+        expect(@user.errors.full_messages).to include("Lastname は全角で入力してください" )
       end
   
 
@@ -73,8 +73,8 @@ RSpec.describe User, type: :model do
       end
 
       it 'passwordが5文字以下であれば登録できないこと' do
-        @user.password ='12345'
-        @user.password_confirmation ='12345'
+        @user.password ='11bbb'
+        @user.password_confirmation ='11bbb'
         @user.valid?
         expect(@user.errors.full_messages).to include('Password is too short (minimum is 6 characters)')
       end
