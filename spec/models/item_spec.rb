@@ -33,29 +33,29 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Text can't be blank")
       end
       it "カテゴリーが空だと保存できない" do
-        @item.category_id = ""
+        @item.category_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category is not a number")
+        expect(@item.errors.full_messages).to include("Category must be other than 1")
       end
       it "商品の状態が空だと保存できない" do
-        @item.item_condition_id = ""
+        @item.item_condition_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Item condition is not a number")
+        expect(@item.errors.full_messages).to include("Item condition must be other than 1")
       end
       it "配送料の負担が空だと保存できない" do
-        @item.tax_id = ""
+        @item.tax_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Tax is not a number")
+        expect(@item.errors.full_messages).to include("Tax must be other than 1")
       end
       it "発送元の地域が空だと保存できない" do
-        @item.prefecture_id = ""
+        @item.prefecture_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Prefecture is not a number")
+        expect(@item.errors.full_messages).to include("Prefecture must be other than 1")
       end
       it "発送までの日数が空だと保存できない" do
-        @item.send_day_id = ""
+        @item.send_day_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Send day is not a number")
+        expect(@item.errors.full_messages).to include("Send day must be other than 1")
       end
       it "価格が空だと保存できない" do
         @item.price = ""
@@ -76,6 +76,11 @@ RSpec.describe Item, type: :model do
         @item.price = 10000000
         @item.valid?
         expect(@item.errors.full_messages).to include("Price must be less than or equal to 9999999")
+      end
+      it "販売価格が全角数字では出品できない" do
+       @item.price = "００あ１h"
+       @item.valid?
+       expect(@item.errors.full_messages).to include("Price is not a number")
       end
     end
   end
