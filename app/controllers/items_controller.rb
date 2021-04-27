@@ -13,14 +13,14 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
-  def update
-  end
+  #def update
+  #end
 
-  def edit
-  end
+  #def edit
+  #end
 
-  def destroy
-  end
+  #def destroy
+  #end
 
   def create
     @item = Item.new(item_params)
