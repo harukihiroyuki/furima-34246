@@ -2,12 +2,25 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :destroy, :update, :create, :edit]
 
   def index
-    @items = Item.includes(:user).order("created_at DESC")
+    @items= Item.includes(:user).order("created_at DESC")
   end
 
   def new
    @item = Item.new
   end
+
+  def show 
+    @item = Item.find(params[:id])
+  end
+
+  #def update
+  #end
+
+  #def edit
+  #end
+
+  #def destroy
+  #end
 
   def create
     @item = Item.new(item_params)
