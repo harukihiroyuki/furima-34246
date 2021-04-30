@@ -48,7 +48,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
-  def redirecto_item
+  def redirect_item
     unless current_user == @item.user
       redirect_to action: :index
      end
