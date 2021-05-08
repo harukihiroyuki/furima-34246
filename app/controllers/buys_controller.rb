@@ -1,12 +1,14 @@
 class BuysController < ApplicationController
  before_action :authenticate_user!, only: :index
+ before_action :buy_item, only: [:create, :index]
  def index
   @address_buy = AddressBuy.new
-  @item = Item.find(params[:item_id])
+  if current_user.id == @item.user_id ||  @item.buy.present? 
+   redirect_to root_path
+  end
  end
 
  def create
-  @item = Item.find(params[:item_id])
   @address_buy = AddressBuy.new(buy_params)
   if @address_buy.valid?
      pay_item
@@ -21,7 +23,7 @@ class BuysController < ApplicationController
  private
 
  def buy_params
-  params.require(:address_buy).permit(:postcode, :prefecture_id, :city, :block, :building, :phone_number, :address, :price).merge(token: params[:token], item_id: params[:item_id], user_id: current_user.id)
+  params.require(:address_buy).permit(:postcode, :prefecture_id, :city, :block, :building, :phone_number, :address).merge(token: params[:token], item_id: params[:item_id], user_id: current_user.id)
  end
 
  def pay_item
@@ -33,5 +35,8 @@ class BuysController < ApplicationController
     )
  end
 
+ def buy_item
+  @item = Item.find(params[:item_id])
+ end
 
 end

@@ -13,10 +13,11 @@ class AddressBuy
   validates :user_id
   validates :item_id
   validates :token
-  validates :building
  end
 
   validates :prefecture_id, numericality: {other_than: 1, message: "can't be blank"}
+  validates :phone_number, length: { minimum: 10, message: 'is too short' }
+  validates :phone_number, length: { maximum: 11, message: 'is too long' }
 
   def save
    buy = Buy.create(user_id: user_id,item_id: item_id)

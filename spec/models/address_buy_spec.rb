@@ -5,8 +5,8 @@ RSpec.describe AddressBuy, type: :model do
   before do
    user = FactoryBot.create(:user)
    item = FactoryBot.create(:item)
-   sleep 10
    @address_buy = FactoryBot.build(:address_buy, user_id: user.id, item_id: item.id)
+   sleep 1
   end
 
   context '内容に問題がない場合' do
@@ -14,9 +14,14 @@ RSpec.describe AddressBuy, type: :model do
     expect(@address_buy).to be_valid
    end
    
-   it "priceとtokenがあれば保存できること" do
+   it "tokenがあれば保存できること" do
     expect(@address_buy).to be_valid
    end
+
+   it "buildingが空でも登録できる" do
+    expect(@address_buy).to be_valid
+   end
+
   end
 
   context '内容に問題がある場合' do
@@ -45,25 +50,35 @@ RSpec.describe AddressBuy, type: :model do
     @address_buy.valid?
     expect(@address_buy.errors.full_messages).to include("Block can't be blank")
    end
-   it 'buildingは空では保存できないこと' do
-    @address_buy.building= ''
-    @address_buy.valid?
-    expect(@address_buy.errors.full_messages).to include("Building can't be blank")
-   end
    it 'userが紐付いていないと保存できないこと' do
     @address_buy.user_id = nil
     @address_buy.valid?
     expect(@address_buy.errors.full_messages).to include("User can't be blank")
    end
-   it "priceが空では登録できないこと" do
-    @address_buy.price = nil
-    @address_buy.valid?
-    expect(@address_buy.errors.full_messages).to include("Price can't be blank")
-   end  
    it "tokenが空では登録できないこと" do
     @address_buy.token = nil
     @address_buy.valid?
     expect(@address_buy.errors.full_messages).to include("Token can't be blank")
+   end
+   it 'itemが紐付いていないと保存できないこと' do
+    @address_buy.item_id = nil
+    @address_buy.valid?
+    expect(@address_buy.errors.full_messages).to include("Item can't be blank")
+   end
+   it 'phone_numberが空では保存できないこと' do
+    @address_buy.phone_number= ''
+    @address_buy.valid?
+    expect(@address_buy.errors.full_messages).to include("Phone number can't be blank")
+   end
+   it 'phone_numberは数字のみでないと保存できない' do
+    @address_buy.phone_number= 'ああああああ'
+    @address_buy.valid?
+    expect(@address_buy.errors.full_messages).to include('Phone number is too short')
+   end
+   it 'phone_numberは11桁以内でないと保存できない' do
+    @address_buy.phone_number= "123456789111"
+    @address_buy.valid?
+    expect(@address_buy.errors.full_messages).to include('Phone number is too long')
    end
   end
  end
