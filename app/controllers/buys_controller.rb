@@ -1,11 +1,9 @@
 class BuysController < ApplicationController
- before_action :authenticate_user!, only: :index
+ before_action :authenticate_user!, only: :index :create
  before_action :buy_item, only: [:create, :index]
+ before_action :buy_case, only: [:create, :index]
  def index
   @address_buy = AddressBuy.new
-  if current_user.id == @item.user_id ||  @item.buy.present? 
-   redirect_to root_path
-  end
  end
 
  def create
@@ -38,5 +36,13 @@ class BuysController < ApplicationController
  def buy_item
   @item = Item.find(params[:item_id])
  end
+
+ def buy_case
+    if current_user.id == @item.user_id ||  @item.buy.present? 
+      redirect_to root_path
+    end
+ end
+
+
 
 end

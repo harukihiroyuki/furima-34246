@@ -11,6 +11,9 @@ class ItemsController < ApplicationController
    @item = Item.new
   end
 
+  #def search
+  #end
+
   def show 
   end
 
