@@ -80,6 +80,11 @@ RSpec.describe AddressBuy, type: :model do
     @address_buy.valid?
     expect(@address_buy.errors.full_messages).to include('Phone number is too long')
    end
+   it 'phone_numberが英数混合では登録できないこと' do
+    @address_buy.phone_number= "abc12345def"
+    @address_buy.valid?
+    expect(@address_buy.errors.full_messages).to include('Phone number is invalid')
+   end
   end
  end
 end
