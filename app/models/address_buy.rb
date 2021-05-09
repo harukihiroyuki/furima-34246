@@ -14,7 +14,7 @@ class AddressBuy
  end 
 
   validates :prefecture_id, numericality: {other_than: 1, message: "can't be blank"}
-  validates :phone_number, length: { minimum: 10, message: 'is too short' }
+  validates :phone_number, length: { minimum: 10, message: 'Phone number is too short' }
   validates :phone_number, length: { maximum: 11, message: 'is too long' }
 
   def save

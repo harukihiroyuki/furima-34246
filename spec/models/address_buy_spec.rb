@@ -74,7 +74,7 @@ RSpec.describe AddressBuy, type: :model do
    it 'phone_numberは数字のみでないと保存できない' do
     @address_buy.phone_number= 'ああああああ'
     @address_buy.valid?
-    expect(@address_buy.errors.full_messages).to include('Phone number is too short')
+    expect(@address_buy.errors.full_messages).to include('Phone number is invalid')
    end
    it 'phone_numberは11桁以内でないと保存できない' do
     @address_buy.phone_number= "123456789111"
@@ -85,6 +85,11 @@ RSpec.describe AddressBuy, type: :model do
     @address_buy.phone_number= "abc12345def"
     @address_buy.valid?
     expect(@address_buy.errors.full_messages).to include('Phone number is invalid')
+   end
+   it 'phone_numberは10桁以内でないと保存できない' do
+    @address_buy.phone_number= "123456789111"
+    @address_buy.valid?
+    expect(@address_buy.errors.full_messages).to include('Phone number is too long')
    end
   end
  end
