@@ -86,10 +86,10 @@ RSpec.describe AddressBuy, type: :model do
     @address_buy.valid?
     expect(@address_buy.errors.full_messages).to include('Phone number is invalid')
    end
-   it 'phone_numberは10桁以内でないと保存できない' do
-    @address_buy.phone_number= "123456789111"
+   it 'phone_numberは9桁以下の場合保存できない' do
+    @address_buy.phone_number= "1234567"
     @address_buy.valid?
-    expect(@address_buy.errors.full_messages).to include('Phone number is too long')
+    expect(@address_buy.errors.full_messages).to include('Phone number is too short')
    end
   end
  end
