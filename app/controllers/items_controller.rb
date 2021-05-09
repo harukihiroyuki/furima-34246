@@ -11,6 +11,8 @@ class ItemsController < ApplicationController
    @item = Item.new
   end
 
+  
+
   def show 
   end
 
@@ -48,8 +50,9 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
+
   def redirect_item
-    unless current_user == @item.user
+    unless user_signed_in && @item.buy.nil 
       redirect_to action: :index
      end
   end
