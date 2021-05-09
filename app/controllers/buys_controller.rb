@@ -1,7 +1,7 @@
 class BuysController < ApplicationController
  before_action :authenticate_user!, only: [:index, :create]
  before_action :buy_item, only: [:create, :index]
- before_action :buy_case, only: [:create, :index]
+ before_action :buy_case, only: [:create, :index, :update, :destroy]
  def index
   @address_buy = AddressBuy.new
  end
