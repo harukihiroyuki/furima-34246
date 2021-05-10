@@ -52,13 +52,13 @@ class ItemsController < ApplicationController
 
 
   def redirect_item
-    unless user_signed_in && @item.buy.nil 
+    unless user_signed_in? && @item.buy.nil? 
       redirect_to action: :index
      end
   end
 
 
-  
+
 
   def item_params
     params.require(:item).permit(:image, :category_id, :item_condition_id, :prefecture_id, :send_day_id, :tax_id,:name,:text,:price).merge(user_id: current_user.id)
