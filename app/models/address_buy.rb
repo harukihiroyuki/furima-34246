@@ -7,7 +7,6 @@ class AddressBuy
   validates :phone_number, format: {with: /\A[-]?[0-9]+(\.[0-9]+)?\z/}
   validates :city
   validates :block
-  validates :phone_number
   validates :user_id
   validates :item_id
   validates :token
